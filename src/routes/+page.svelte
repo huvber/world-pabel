@@ -1,2 +1,9 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+import Button from "../components/button.svelte";
+import PageWrapper from "../components/page-wrapper.svelte";
+
+</script>
+
+<PageWrapper>
+  <Button on:click={() => alert('login')}>Login</Button>
+</PageWrapper>
