@@ -9,4 +9,4 @@
   }
 </style>
 
-<button {...$$props}><slot /></button>
+<button {...$$props} type="button"><slot /></button>
