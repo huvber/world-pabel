@@ -1,16 +1,7 @@
-<script>
-  export let url='';
-  export let name='';
+<script lang="ts">
+  export let url = '';
+  export let name = '';
+  export let size: 'small' | 'medium' | 'large' = 'large';
 </script>
 
-<style>
-  .image {
-    border-radius: 50px;
-    border: 3px solid #45ff32;
-    width: 2.5em;
-    height: 2.5em;
-    display: block;
-  }
-</style>
-
-<img class="image" src={url} alt='name' />
+<img class={`nes-avatar is-rounded is-${size}`} src={url} alt={name} />

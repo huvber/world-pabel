@@ -1,9 +1,28 @@
 <script>
+  import { goto } from '$app/navigation';
+  import { user } from '../stores/user';
+  import { browser } from '$app/environment';
 
-    import PageWrapper from "../components/page-wrapper.svelte";
-
+  if (browser) {
+    user.subscribe((currentUser) => {
+      if (!currentUser) return goto('/login');
+      return goto('/');
+    });
+  }
 </script>
 
-<PageWrapper>
-  <slot />
-</PageWrapper>
+<svelte:head>
+  <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+    rel="stylesheet"
+  />
+</svelte:head>
+<slot />
+
+<style>
+  :global(body) {
+    padding: 1rem;
+    font-family: 'Press Start 2P', monospace;
+  }
+</style>

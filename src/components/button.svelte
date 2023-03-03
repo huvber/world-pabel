@@ -1,12 +1,10 @@
-<style>
-  button {
-    border-style: none;
-    background-color: #aaa;
-    border: 1px solid #333;
-    border-radius: 0.5em;
-    padding: 0.6em 1em;
-    display: inline-block;
-  }
-</style>
+<script lang="ts">
+  import { createEventDispatcher } from 'svelte';
 
-<button {...$$props} type="button"><slot /></button>
+  const dispatch = createEventDispatcher();
+
+  const click = () => dispatch('click');
+  let type: 'primary' | 'success' | 'warning' | 'error' | 'disabled' = 'primary';
+</script>
+
+<button {...$$props} type="button" class={`nes-btn is-${type}`} on:click={click}><slot /></button>
