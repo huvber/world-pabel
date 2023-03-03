@@ -15,6 +15,11 @@ export const signIn = async () => {
   }
 };
 
+export const signOut = async () => {
+  auth.signOut();
+  user.set(null);
+};
+
 onAuthStateChanged(auth, (userAuthData) => {
   if (userAuthData) {
     user.set(userAuthData);

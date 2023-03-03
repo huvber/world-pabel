@@ -2,10 +2,18 @@
   import { goto } from '$app/navigation';
   import { user } from '../stores/user';
   import { browser } from '$app/environment';
+  import { player } from '../stores/players';
 
   if (browser) {
     user.subscribe((currentUser) => {
       if (!currentUser) return goto('/login');
+      player.create({
+        name: currentUser.displayName,
+        avatar: currentUser.photoURL,
+        email: currentUser.email,
+        level: 1.5,
+        uid: currentUser.uid
+      });
       return goto('/');
     });
   }
